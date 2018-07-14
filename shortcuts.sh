@@ -5,7 +5,7 @@ xrandr --output HDMI-1 --left-of eDP-1
 setxkbmap us -variant intl
 
 # Volume
-pavucontrol
+#pavucontrol
 
 # bluetooth
-blueman
+#blueman
