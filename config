@@ -7,7 +7,7 @@
 
 # i3 config file (v4)
 #
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+t exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -157,23 +157,25 @@ bar {
         status_command i3status
         mode hide
         hidden_state hide
-        modifier $mod
+	modifier $mod
 }
 
-# Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# Wallpapers
-exec --no-startup-id feh --randomize --bg-center /home/helfs/Imagens/wp/*
 
 # Sem bordas no Firefox, Telegram, Spotify
 for_window [class="Firefox"] border none
 for_window [class="Telegram"] border none
 for_window [class="Spotify"] border none
-
 for_window [class="terminal"] border pixel 1
+for_window [class="PyCharm"] border none
 
+# Monitor
+exec --no-startup-id ./home/helfs/monitor.sh
+
+# Wallpapers
+exec --no-startup-id feh --randomize --bg-scale /home/helfs/Pictures/wp/*
+
+# Close focused window
+bindsym $mod+q kill
 
 
 # Pulse Audio controls
@@ -186,12 +188,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec /home/helfs/Documents/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-
